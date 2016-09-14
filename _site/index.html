@@ -1,26 +1,80 @@
-<!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
-    <title>Peter Richards</title>
-        <link rel="stylesheet" href="/assets/homepageassets/css/style.css">
-  </head>
+<!--
+//============================================================
+//
+// Copyright (C) 2013 Matthew Wagerfield
+//
+// Twitter: https://twitter.com/mwagerfield
+//
+// Permission is hereby granted, free of charge, to any
+// person obtaining a copy of this software and associated
+// documentation files (the "Software"), to deal in the
+// Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute,
+// sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do
+// so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice
+// shall be included in all copies or substantial portions
+// of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY
+// OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+// LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+// FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+// EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+// FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+// AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+// OR OTHER DEALINGS IN THE SOFTWARE.
+//
+//============================================================
 
+I modified the code, but not extensively. Credit belongs to Matthew. 
+-->
+
+<!doctype html>
+<html>
+  <head>
+
+    <meta charset="utf-8"/>
+    <title>Peter Richards</title>
+    <link rel="stylesheet" type="text/css" href="assets/homepageassets/css/styles.css"/>
+
+  </head>
   <body>
 
-	<div class="textsection">
-		<div class="textoverparticles">
-			<h1><span onclick='return false;'>Peter Richards</span></h1>
-			<h3><span onclick='return false;'>Washington, D.C. // New York City <br> St. Albans 2014 // Columbia University 2018</span></h3> 
-			<h2 class="textsub">
-				<a class="link" href="/photography/">Photography</a> | <a class="link" href="http://neptunesneedle.org/">Neptune's Needle</a> | <a class="link" href="mailto:peter@frigat.es">Contact</a> 
-			</h2>
-		</div>
-	</div>
-  
- 	<div id="particles-js"></div>
-	<script src='http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
-	<script src="/assets/homepageassets/js/index.js"></script>
+    <div id="container" class="container">
+      <div id="output" class="container">
+      </div>
+      <div id="vignette" class="overlay vignette">
+      </div>
+    
+      <div id="ui" class="wrapper">
+        <header id="header" class="header">
+          <!--<img class="logo" src="assets/graphics/logo.svg">-->
+          <h2>Peter Richards</h2>
+		  <h1>Washington, D.C.<br>New York City</h1>
+		  <h1>St. Albans 2014<br>Columbia University 2018</h1>
+        </header>
+        <article id="information" class="information">
+          <p><a href="/photography/">&nbsp;Photography&nbsp;</a></p>
+		  <p><a class="link" href="mailto:peter@frigat.es">&nbsp;Contact&nbsp;</a></p>
+        </article>
+      </div>
+      <ul id="links" class="links">
+		<li><a class="source" href="http://github.com/richards/" target="_blank">GitHub</a></li>
+        <li><a class="source" href="http://neptunesneedle.org/" target="_blank">Neptune's Needle</a></li>
+        <li><a class="source" href="http://columbiaspace.org/" target="_blank">Columbia Space Initiative</a></li>
+		<li><a class="source" href="http://knickerbockermotorsports.org/" target="_blank">Knickerbocker Motorsports</a></li>
+      </ul>
+    </div>
+    <div id="controls" class="controls">
+    </div>
 
+    <script src="assets/homepageassets/js/prefixfree.min.js"></script>
+    <script src="assets/homepageassets/js/dat.gui.min.js"></script>
+    <script src="assets/homepageassets/js/fss.min.js"></script>
+    <script src="assets/homepageassets/js/example.js"></script>
   </body>
 </html>
