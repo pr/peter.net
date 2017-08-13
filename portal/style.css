@@ -1,0 +1,22 @@
+.parentTable{
+    width: 100%;
+}
+.parentTable tr td{
+    padding: 5px 30px;
+}
+
+.parentTable tr td.spec{
+    width: 4px;
+    padding: 0;
+    border: none;
+    background: #0F0;
+}
+.childTable{
+    width: 100%;
+}
+.childTable tr td{
+    border-bottom: 1px dashed;
+}
+.childTable tr:last-child td{
+    border: none;
+}
