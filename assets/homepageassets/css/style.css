@@ -1,0 +1,175 @@
+* { box-sizing: border-box; }
+
+html, body, main {
+  width: 100%;
+  height: 100%;
+  font-family: 'Lato', cursive;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #004466;
+}
+
+main {
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+header {
+    font-size: 4rem;
+}
+
+subheader {
+    font-size: 1.35rem;
+}
+
+icon {
+    font-size: 5.5rem;
+}
+
+linkLable {
+    font-size: 3.25rem;
+}
+
+section.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+section.background.mousedown {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+div.grayBox {
+  position: absolute;
+  padding: 1.25rem;
+  color: white;
+  margin-left: 0;
+  background-color: gray;
+  opacity: .8;
+  text-align: center;
+  pointer-events: none;
+}
+
+div.clickable {
+  pointer-events: visible;
+}
+
+div.square {
+  margin-top: 28.5rem;
+  width:  9rem;
+  height: 9rem;
+}
+
+div.rectangle {
+    width:  34rem;
+    height: 6.5rem;
+}
+
+div.top {
+    height: 9.5rem;
+    margin-top: 0;
+}
+
+div.projects {
+    margin-top: 11.5rem;
+}
+
+div.threeSixtyImages {
+    margin-top: 20rem;
+}
+
+div.linkedin {
+    margin-left: 12.5rem;
+}
+
+div.contact {
+    margin-left: 25rem;
+}
+
+div.clickable:hover {
+  background-color: #004466;
+}
+
+#progress {
+  width: 0;
+  height: 10px;
+  position: fixed;
+  top: 0;
+  background: #004466;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  z-index: 99999;
+}
+
+#progress.finish {
+  opacity: 0;
+}
+
+@media screen and (max-width: 610px) {
+
+    header {
+        font-size: 3em;
+    }
+
+    subheader {
+        font-size: 1em;
+    }
+
+    icon {
+        font-size: 4em;
+    }
+
+    linkLable {
+        font-size: 2.5em;
+    }
+
+    div.grayBox {
+      padding: 0.65em;
+    }
+
+    div.square {
+      margin-top: 19.5em;
+      width:  6.5em;
+      height: 6.5em;
+    }
+
+    div.rectangle {
+        width:  87%;
+        height: 4.5em;
+    }
+
+    div.top {
+        height: 6.75em;
+        margin-top: 0;
+    }
+
+    div.projects {
+        margin-top: 8em;
+    }
+
+    div.threeSixtyImages {
+        margin-top: 13.75em;
+    }
+
+    div.linkedin {
+        margin-left: 32.5%;
+    }
+
+    div.contact {
+        margin-left: 65%;
+    }
+
+    div.clickable:hover {
+      background-color: #004466;
+    }
+
+}

@@ -1,201 +1,92 @@
-/*
-	Indivisible by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
-*/
+(function(){
 
-(function($) {
+    var viewer, container, top, projects, threeSixtyImages, github, linkedin, contact, routePanoramas, assetPath, items, selection, progressElement, progress;
 
-	skel.breakpoints({
-		xlarge:	'(max-width: 1680px)',
-		large:	'(max-width: 1280px)',
-		medium:	'(max-width: 980px)',
-		small:	'(max-width: 736px)',
-		xsmall:	'(max-width: 480px)',
-		xxsmall: '(max-width: 360px)'
-	});
+    assetPath = 'examples/asset/textures/equirectangular';
+    selection = document.querySelector( '.item.selected' );
 
-	$(function() {
+    routePanoramas = {
+      Home: {
+        panorama: new PANOLENS.ImagePanorama( './assets/homepageassets/images/1.jpg' ),
+        initialLookPosition: new THREE.Vector3( 35000, 129.86, -3164.48 )
+      },
+    };
 
-		var	$window = $(window),
-			$document = $(document),
-			$body = $('body'),
-			$wrapper = $('#wrapper'),
-			$footer = $('#footer');
+    container = document.querySelector( 'section.background' );
+    top = document.querySelector( 'section.top' );
+    projects = document.querySelector( 'section.projects');
+    threeSixtyImages = document.querySelector( 'section.threeSixtyImages' );
+    github = document.querySelector( 'section.github' );
+    linkedin = document.querySelector( 'section.linkedin' );
+    contact = document.querySelector( 'section.contact' );
+    items = document.querySelectorAll( '.item' );
+    progressElement = document.getElementById( 'progress' );
 
-		// Disable animations/transitions until the page has loaded.
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading-0');
+    viewer = new PANOLENS.Viewer( { container: container, controlBar: false } );
 
-					window.setTimeout(function() {
-						$body.removeClass('is-loading-1');
-					}, 1500);
-				}, 100);
-			});
+    window.addEventListener( 'orientationchange', function () {
+      setTimeout(function(){
+        viewer.onWindowResize(window.innerWidth, window.innerHeight)
+      }, 200);
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+    }, false );
 
-		// Panels.
-			var $wrapper = $('#wrapper'),
-				$panels = $wrapper.children('.panel'),
-				locked = true;
+    function onEnter ( event ) {
+      progressElement.style.width = 0;
+      progressElement.classList.remove( 'finish' );
+    }
 
-			// Deactivate + hide all but the first panel.
-				$panels.not($panels.first())
-					.addClass('inactive')
-					.hide();
+    function onProgress ( event ) {
+      progress = event.progress.loaded / event.progress.total * 100;
+      progressElement.style.width = progress + '%';
+      if ( progress === 100 ) {
+        progressElement.classList.add( 'finish' );
+      }
+    }
 
-			// Fix images.
-				$panels.each(function() {
+    function addDomEvents () {
 
-					var	$this = $(this),
-						$image = $this.children('.image'),
-						$img = $image.find('img'),
-						position = $img.data('position');
+      container.addEventListener( 'mousedown', function(){
+        this.classList.add( 'mousedown' );
+      }, false );
 
-					// Set background.
-						$image.css('background-image', 'url(' + $img.attr('src') + ')');
+      container.addEventListener( 'mouseup', function(){
+        this.classList.remove( 'mousedown' );
+      }, false );
 
-					// Set position (if set).
-						if (position)
-							$image.css('background-position', position);
+      for ( var i = 0, hash; i < items.length; i++ ) {
+        hash = items[ i ].getAttribute( 'data-hash' );
+        if ( hash ) {
+          items[ i ].addEventListener( 'click', function () {
+            routeTo( this.getAttribute( 'name' ), this );
+          }, false );
+        }
 
-					// Hide original.
-						$img.hide();
+        if ( hash === window.location.hash ) {
+          routeTo( hash.replace( '#', '' ), items[ i ] );
+        }
+      }
+    }
 
-				});
+    function setUpInitialState () {
+      if ( routePanoramas ) {
+        for ( var routeName in routePanoramas ) {
+          if ( routePanoramas.hasOwnProperty( routeName ) ) {
+            var route = routePanoramas[ routeName ];
+            route.panorama.addEventListener( 'progress', onProgress );
+            route.panorama.addEventListener( 'enter', onEnter );
+            if ( route.initialLookPosition ) {
+              route.panorama.addEventListener('enter-fade-start', function( position ){
+                viewer.tweenControlCenter( position, 0 );
+              }.bind( this, route.initialLookPosition ));
+            }
+            viewer.add( route.panorama );
+          }
+        }
+      }
+    }
 
-			// Unlock after a delay.
-				window.setTimeout(function() {
-					locked = false;
-				}, 1250);
+    addDomEvents();
+    setUpInitialState();
 
-			// Click event.
-				$('a[href^="#"]').on('click', function(event) {
-
-					var $this = $(this),
-						id = $this.attr('href'),
-						$panel = $(id),
-						$ul = $this.parents('ul'),
-						delay = 0;
-
-					// Prevent default.
-						event.preventDefault();
-						event.stopPropagation();
-
-					// Locked? Bail.
-						if (locked)
-							return;
-
-					// Lock.
-						locked = true;
-
-					// Activate link.
-						$this.addClass('active');
-
-						if ($ul.hasClass('spinX')
-						||	$ul.hasClass('spinY'))
-							delay = 250;
-
-					// Delay.
-						window.setTimeout(function() {
-
-							// Deactivate all panels.
-								$panels.addClass('inactive');
-
-							// Deactivate footer.
-								$footer.addClass('inactive');
-
-							// Delay.
-								window.setTimeout(function() {
-
-									// Hide all panels.
-										$panels.hide();
-
-									// Show target panel.
-										$panel.show();
-
-									// Reset scroll.
-										$document.scrollTop(0);
-
-									// Delay.
-										window.setTimeout(function() {
-
-											// Activate target panel.
-												$panel.removeClass('inactive');
-
-											// Deactivate link.
-												$this.removeClass('active');
-
-											// Unlock.
-												locked = false;
-
-											// IE: Refresh.
-												$window.triggerHandler('--refresh');
-
-											window.setTimeout(function() {
-
-												// Activate footer.
-													$footer.removeClass('inactive');
-
-											}, 250);
-
-										}, 100);
-
-								}, 350);
-
-						}, delay);
-
-				});
-
-		// IE: Fixes.
-			if (skel.vars.IEVersion < 12) {
-
-				// Layout fixes.
-					$window.on('--refresh', function() {
-
-						// Fix min-height/flexbox.
-							$wrapper.css('height', 'auto');
-
-							window.setTimeout(function() {
-
-								var h = $wrapper.height(),
-									wh = $window.height();
-
-								if (h < wh)
-									$wrapper.css('height', '100vh');
-
-							}, 0);
-
-						// Fix panel image/content heights (IE<10 only).
-							if (skel.vars.IEVersion < 10) {
-
-								var $panel = $('.panel').not('.inactive'),
-									$image = $panel.find('.image'),
-									$content = $panel.find('.content'),
-									ih = $image.height(),
-									ch = $content.height(),
-									x = Math.max(ih, ch);
-
-								$image.css('min-height', x + 'px');
-								$content.css('min-height', x + 'px');
-
-							}
-
-					});
-
-					$window.on('load', function() {
-						$window.triggerHandler('--refresh');
-					});
-
-				// Remove spinX/spinY.
-					$('.spinX').removeClass('spinX');
-					$('.spinY').removeClass('spinY');
-
-			}
-
-	});
-
-})(jQuery);
+})();
