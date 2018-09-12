@@ -125,7 +125,7 @@ div.clickable:hover {
     }
 
     icon {
-        font-size: 4em;
+        font-size: 3.25em;
     }
 
     linkLable {
@@ -138,12 +138,72 @@ div.clickable:hover {
 
     div.square {
       margin-top: 19.5em;
-      width:  6.5em;
-      height: 6.5em;
+      width:  5em;
+      height: 5em;
     }
 
     div.rectangle {
-        width:  87%;
+        width:  85%;
+        height: 4.5em;
+    }
+
+    div.top {
+        height: 6.75em;
+        margin-top: 0;
+    }
+
+    div.projects {
+        margin-top: 8em;
+    }
+
+    div.threeSixtyImages {
+        margin-top: 13.75em;
+    }
+
+    div.linkedin {
+        margin-left: 33%;
+    }
+
+    div.contact {
+        margin-left: 65.5%;
+    }
+
+    div.clickable:hover {
+      background-color: #004466;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    header {
+        font-size: 2.3em;
+    }
+
+    subheader {
+        font-size: 0.8em;
+    }
+
+    icon {
+        font-size: 2em;
+    }
+
+    linkLable {
+        font-size: 1.8em;
+    }
+
+    div.grayBox {
+      padding: 0.65em;
+    }
+
+    div.square {
+      margin-top: 19.5em;
+      width:  3.5em;
+      height: 3.5em;
+    }
+
+    div.rectangle {
+        width:  85%;
         height: 4.5em;
     }
 

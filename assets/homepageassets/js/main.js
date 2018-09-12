@@ -7,8 +7,8 @@
 
     routePanoramas = {
       Home: {
-        panorama: new PANOLENS.ImagePanorama( './assets/homepageassets/images/1.jpg' ),
-        initialLookPosition: new THREE.Vector3( 35000, 129.86, -3164.48 )
+        panorama: new PANOLENS.ImagePanorama( './360/images/newyork/wharf.jpg' ),
+        initialLookPosition: new THREE.Vector3( 2.5, 1.5, 3 )
       },
     };
 
