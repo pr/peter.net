@@ -1,6 +1,22 @@
-<script src="/assets/photoassets/js/jquery.min.js"></script>
-<script src="/assets/photoassets/js/jquery.dropotron.min.js"></script>
-<script src="/assets/photoassets/js/skel.min.js"></script>
-<script src="/assets/photoassets/js/util.js"></script>
-<!--[if lte IE 8]><script src="/assets/photoassets/js/ie/respond.min.js"></script><![endif]-->
-<script src="/assets/photoassets/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/assets/js/materialize.js"></script>
+<script src="/assets/js/materializeInit.js"></script>
+
+<!--Stop using raw git-->
+<script src="https://cdn.rawgit.com/leemark/embed360/20dac87eea4d7fc0f8a368519fc6c3b3a208f492/embed360.js"></script>
+<script>
+    embed360('.embed360');
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+</script>
