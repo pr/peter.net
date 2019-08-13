@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/prichards
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://peter.net
+  * I am prichards (https://keybase.io/prichards) on keybase.
+  * I have a public key ASB8AxF1kEsdCj4mWv1CXy9sz4h-qN_4JEzvq9dl8aoK2wo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120f052de5e96da2142c03372059d07b17342b4fd22dfb85a8392739dddad2cc8ba0a",
+      "host": "keybase.io",
+      "kid": "01207c031175904b1d0a3e265afd425f2f6ccf887ea8dff8244cefabd765f1aa0adb0a",
+      "uid": "5eb4d43088326a18e9f127c83de2fe19",
+      "username": "prichards"
+    },
+    "merkle_root": {
+      "ctime": 1565733849,
+      "hash": "1f84b5cf2c7154088cefba0550608510aaec998b23494ff021155b7d71ceafcca367bbeac45d6acdfe1bbc15ac34728cfb358df8b82ce04b3333442e1f2be09f",
+      "hash_meta": "37609d2096b726cc925626c97fc9e2de798668d2638352cf6323a0a9a809d1a4",
+      "seqno": 6008668
+    },
+    "service": {
+      "entropy": "J7d4FrUff2xBqL7TfvazT+pU",
+      "hostname": "peter.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.3.0"
+  },
+  "ctime": 1565733871,
+  "expire_in": 504576000,
+  "prev": "9a54caaeb0ac1250645b67cf8ecd201497ad93ebd736c756f2638c5385338a0e",
+  "seqno": 16,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgfAMRdZBLHQo+Jlr9Ql8vbM+Ifqjf+CRM76vXZfGqCtsKp3BheWxvYWTESpcCEMQgmlTKrrCsElBkW2fPjs0gFJetk+vXNsdW8mOMU4Uzig7EICOGm9RKbGdmdfaaVn0237NHL3kMN+QCXN/Ilj1ihVQxAgHCo3NpZ8RAnSdGKNjeXP0MCaASMqmyPQjgTgL1z8Y8upAlvBah4Hd0pK8YeehKabU9GF85HkV1pZY6bH6kHnMjCuEc+7IXAKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIOgiYOH1fzy79ljO4cpVRprHLSJUxCUhRNKn4K+eEP2Do3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/prichards
+
+==================================================================
