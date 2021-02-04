@@ -64,7 +64,7 @@ div.clickable {
 }
 
 div.square {
-  margin-top: 28.5rem;
+  margin-top: 12.5rem;
   width:  9rem;
   height: 9rem;
 }
@@ -133,13 +133,13 @@ div.clickable:hover {
     }
 
     div.grayBox {
-      padding: 0.65em;
+      padding: 1.05em;
     }
 
     div.square {
-      margin-top: 19.5em;
-      width:  5em;
-      height: 5em;
+      margin-top: 8em;
+      width:  6em;
+      height: 6em;
     }
 
     div.rectangle {
@@ -174,7 +174,7 @@ div.clickable:hover {
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 405px) {
 
     header {
         font-size: 2.3em;
@@ -197,12 +197,13 @@ div.clickable:hover {
     }
 
     div.square {
-      margin-top: 19.5em;
+      margin-top: 8.5em;
       width:  3.5em;
       height: 3.5em;
     }
 
     div.rectangle {
+        padding: 0.95em;
         width:  85%;
         height: 4.5em;
     }
