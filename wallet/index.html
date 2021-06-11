@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <link rel='shortcut icon' type='image/x-icon' href='/assets/favicon.ico' />
+    <title>Wallet</title>
+    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script>
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'/>
+</head>
+<style>
+    body {
+        margin: 0;
+        background-color:grey;
+    }
+    x3d {
+        background-color: white;
+        margin: auto;
+        width: 90%;
+        height: 100%;
+        border: 3px solid #000880;
+        padding: 10px;
+    }
+</style>
+<body>
+    <!--https://doc.x3dom.org/tutorials/animationInteraction/viewpoint/index.html-->
+    <!--https://doc.x3dom.org/tutorials/animationInteraction/navigation/index.html-->
+    <!--press d for debug mode-->
+    <!--press v for current view-->
+    <br/>
+    <br/>
+    <x3d>
+        <scene>
+            <navigationInfo type='"examine" "any"' id="navType"></navigationInfo>
+            <viewpoint position="24.49004 158.51663 63.23969" orientation="-0.98668 0.14423 0.07523 1.28636" description="camera"></viewpoint>
+            <inline url="/assets/x3d/wallet.x3d"> </inline>
+        </scene>
+    </x3d>
+</body>
+</html>
