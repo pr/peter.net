@@ -30,7 +30,7 @@ icon {
 }
 
 linkLable {
-    font-size: 3.25rem;
+    font-size: 2.5rem;
 }
 
 section.background {
@@ -50,7 +50,9 @@ section.background.mousedown {
 
 div.grayBox {
   position: absolute;
-  padding: 1.25rem;
+  padding: 1.2rem;
+  width:  34rem;
+  height: 5.5rem;
   color: white;
   margin-left: 0;
   background-color: gray;
@@ -63,36 +65,25 @@ div.clickable {
   pointer-events: visible;
 }
 
-div.square {
-  margin-top: 12.5rem;
-  width:  9rem;
-  height: 9rem;
-}
-
-div.rectangle {
-    width:  34rem;
-    height: 6.5rem;
-}
-
 div.top {
     height: 9.5rem;
     margin-top: 0;
 }
 
-div.projects {
-    margin-top: 11.5rem;
+div.cars {
+    margin-top: 12rem;
 }
 
-div.threeSixtyImages {
+div.github {
     margin-top: 20rem;
 }
 
 div.linkedin {
-    margin-left: 12.5rem;
+    margin-top: 28rem;
 }
 
-div.contact {
-    margin-left: 25rem;
+div.threeSixtyImages {
+    margin-top: 20rem;
 }
 
 div.clickable:hover {
@@ -129,27 +120,30 @@ div.clickable:hover {
     }
 
     linkLable {
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     div.grayBox {
       padding: 1.05em;
-    }
-
-    div.square {
-      margin-top: 8em;
-      width:  6em;
-      height: 6em;
-    }
-
-    div.rectangle {
-        width:  85%;
-        height: 4.5em;
+      width:  85%;
+      height: 4.5em;
     }
 
     div.top {
         height: 6.75em;
         margin-top: 0;
+    }
+
+    div.cars {
+        margin-top: 8rem;
+    }
+
+    div.github {
+        margin-top: 14rem;
+    }
+
+    div.linkedin {
+        margin-top: 20rem;
     }
 
     div.projects {
@@ -158,14 +152,6 @@ div.clickable:hover {
 
     div.threeSixtyImages {
         margin-top: 13.75em;
-    }
-
-    div.linkedin {
-        margin-left: 33%;
-    }
-
-    div.contact {
-        margin-left: 65.5%;
     }
 
     div.clickable:hover {
@@ -192,22 +178,6 @@ div.clickable:hover {
         font-size: 1.8em;
     }
 
-    div.grayBox {
-      padding: 0.65em;
-    }
-
-    div.square {
-      margin-top: 8.5em;
-      width:  3.5em;
-      height: 3.5em;
-    }
-
-    div.rectangle {
-        padding: 0.95em;
-        width:  85%;
-        height: 4.5em;
-    }
-
     div.top {
         height: 6.75em;
         margin-top: 0;
@@ -219,14 +189,6 @@ div.clickable:hover {
 
     div.threeSixtyImages {
         margin-top: 13.75em;
-    }
-
-    div.linkedin {
-        margin-left: 32.5%;
-    }
-
-    div.contact {
-        margin-left: 65%;
     }
 
     div.clickable:hover {
