@@ -7,7 +7,7 @@
 
     routePanoramas = {
       Home: {
-        panorama: new PANOLENS.ImagePanorama( './assets/images/360/newyork/wharf.jpg' ),
+        panorama: new PANOLENS.ImagePanorama( './assets/images/360/new_york_city_pier_16.jpg' ),
         initialLookPosition: new THREE.Vector3( 2.5, 1.5, 3 )
       },
     };
