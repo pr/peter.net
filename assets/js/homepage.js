@@ -1,107 +1,133 @@
-let viewer
-let container
-let items
-let progressElement
-let progress
+"use strict";
+let camera
+let scene
+let element = document.getElementsByClassName("background")[0]
+let renderer
+let onPointerDownPointerX
+let onPointerDownPointerY
+let onPointerDownLon
+let onPointerDownLat
+let field_of_view = 70
+let isUserInteracting = false
+let latitude = 0
+let longitude = 0
+let phi = 0
+let theta = 0
+let ratio =  window.innerWidth / window.innerHeight
 let images
 let startIndex
+let texture
+let mesh
+
+// Huge thanks to https://norikdavtian.github.io/ThreeJS-360-Panorama/
 
 class ThreeSixtyImage {
-    constructor(imageLocation, x, y, z) {
+    constructor(imageLocation, start_latitude, start_longitude, field_of_view) {
         this.imageLocation = imageLocation;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this.start_latitude = start_latitude;
+        this.start_longitude = start_longitude;
     }
 }
 
 startIndex = -1
 images = [
-    new ThreeSixtyImage("./assets/images/360/new_york_city_pier_16.jpg", 2.5, 1.5, 3),
-    new ThreeSixtyImage("./assets/images/360/new_york_city_statue_of_liberty_interior.jpg", 2.5, 6.5, 3),
-    new ThreeSixtyImage("./assets/images/360/new_york_city_statue_of_liberty_exterior.jpg", 8, -1.5, 3),
-    new ThreeSixtyImage("./assets/images/360/macau.jpg", 8, -1.5, 3),
-    new ThreeSixtyImage("./assets/images/360/columbia.jpg", 8, 3, 3),
-    new ThreeSixtyImage("./assets/images/360/florida_2.jpg", 8, -1.5, 3),
+    new ThreeSixtyImage("./assets/images/360/new_york_city_pier_16.jpg", -15, -30),
+    new ThreeSixtyImage("./assets/images/360/new_york_city_statue_of_liberty_exterior.jpg", 15, -10),
+    new ThreeSixtyImage("./assets/images/360/new_york_city_statue_of_liberty_interior.jpg", -50, -10),
+    new ThreeSixtyImage("./assets/images/360/macau.jpg", 0, 150),
+    new ThreeSixtyImage("./assets/images/360/columbia.jpg", -20, 3),
+    new ThreeSixtyImage("./assets/images/360/florida.jpg", 0, 190),
 ]
 
-container = document.querySelector("section.background");
-items = document.querySelectorAll(".item");
-progressElement = document.getElementById("progress");
-
-viewer = new PANOLENS.Viewer({container: container, controlBar: false});
-
-window.addEventListener("orientationchange", function () {
-    setTimeout(function () {
-        viewer.onWindowResize(window.innerWidth, window.innerHeight)
-    }, 200);
-}, false);
-
-function getPanorama() {
+function loadMesh() {
     startIndex++
 
     let image = images[(startIndex) % images.length]
-    let panorama = new PANOLENS.ImagePanorama(image.imageLocation);
-    let initialLookPosition = new THREE.Vector3(image.x, image.y, image.z);
 
-    return [panorama, initialLookPosition]
+    texture = THREE.ImageUtils.loadTexture(image.imageLocation, new THREE.UVMapping())
+    mesh = new THREE.Mesh(new THREE.SphereGeometry(500, 60, 40), new THREE.MeshBasicMaterial({map: texture}));
+    mesh.scale.x = -1;
+
+    latitude = image.start_latitude
+    longitude = image.start_longitude
 }
 
-function onEnter() {
-    progressElement.style.width = 0;
-    progressElement.classList.remove("finish");
+
+function init() {
+    camera = new THREE.PerspectiveCamera(field_of_view, ratio, 1, 1000);
+    scene = new THREE.Scene();
+    loadMesh()
+    scene.add(mesh);
+    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    element.appendChild(renderer.domElement);
+    element.addEventListener("mousedown", onDocumentMouseDown, false);
+    element.addEventListener("mousewheel", onDocumentMouseWheel, false);
+    element.addEventListener("DOMMouseScroll", onDocumentMouseWheel, false);
+    window.addEventListener("resize", onWindowResized, false);
+    onWindowResized();
 }
 
-function onProgress(event) {
-    progress = event.progress.loaded / event.progress.total * 100;
-    progressElement.style.width = progress + "%";
-    if (progress === 100) {
-        progressElement.classList.add("finish");
+function onWindowResized() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.projectionMatrix.makePerspective(field_of_view, window.innerWidth / window.innerHeight, 1, 1100);
+}
+
+function onDocumentMouseDown(event) {
+    event.preventDefault();
+    onPointerDownPointerX = event.clientX;
+    onPointerDownPointerY = event.clientY;
+    onPointerDownLon = longitude;
+    onPointerDownLat = latitude;
+    isUserInteracting = true;
+    element.addEventListener("mousemove", onDocumentMouseMove, false);
+    element.addEventListener("mouseup", onDocumentMouseUp, false);
+}
+function onDocumentMouseMove(event) {
+    longitude = (event.clientX - onPointerDownPointerX) * -0.175 + onPointerDownLon;
+    latitude = (event.clientY - onPointerDownPointerY) * -0.175 + onPointerDownLat;
+}
+function onDocumentMouseUp() {
+    isUserInteracting = false;
+    element.removeEventListener("mousemove", onDocumentMouseMove, false);
+    element.removeEventListener("mouseup", onDocumentMouseUp, false);
+}
+function onDocumentMouseWheel(event) {
+    if (event.wheelDeltaY) {
+        field_of_view -= event.wheelDeltaY * 0.05;
+    } else if (event.wheelDelta) {
+        field_of_view -= event.wheelDelta * 0.05;
+    } else if (event.detail) {
+        field_of_view += event.detail * 1.0;
     }
-}
-
-function addDomEvents() {
-    container.addEventListener("mousedown", function () {
-        this.classList.add("mousedown");
-    }, false);
-
-    container.addEventListener("mouseup", function () {
-        this.classList.remove("mousedown");
-    }, false);
-
-    for (let i = 0, hash; i < items.length; i++) {
-        hash = items[i].getAttribute("data-hash");
-        if (hash) {
-            items[i].addEventListener("click", function () {
-                routeTo(this.getAttribute("name"), this);
-            }, false);
-        }
-
-        if (hash === window.location.hash) {
-            routeTo(hash.replace("#", ""), items[i]);
-        }
+    if (field_of_view < 45 || field_of_view > 90) {
+        field_of_view = (field_of_view < 45) ? 45 : 90;
     }
+    camera.projectionMatrix.makePerspective(field_of_view, ratio, 1, 1100);
+}
+function animate() {
+    requestAnimationFrame(animate);
+    render();
+}
+function render() {
+    if (isUserInteracting === false) {
+        longitude += .025;
+    }
+    latitude = Math.max(-85, Math.min(85, latitude));
+    phi = THREE.Math.degToRad(90 - latitude);
+    theta = THREE.Math.degToRad(longitude);
+    camera.position.x = 100 * Math.sin(phi) * Math.cos(theta);
+    camera.position.y = 100 * Math.cos(phi);
+    camera.position.z = 100 * Math.sin(phi) * Math.sin(theta);
+    camera.lookAt(scene.position);
+    renderer.render(scene, camera);
 }
 
-function setUpInitialState() {
-    const [panorama, initialLookPosition] = getPanorama()
-
-    panorama.addEventListener("progress", onProgress);
-    panorama.addEventListener("enter", onEnter);
-    panorama.addEventListener("enter-fade-start", function (position) {
-        viewer.tweenControlCenter(position, 0);
-    }.bind(this, initialLookPosition));
-    viewer.add(panorama);
+function refreshMesh() {
+    scene.remove(mesh)
+    loadMesh()
+    scene.add(mesh)
 }
 
-function refreshState() {
-    const [newPanorama, newLookPosition] = getPanorama()
-
-    viewer.dispose()
-    viewer.add(newPanorama)
-    viewer.setPanorama(newPanorama)
-    viewer.tweenControlCenter(newLookPosition, 0);
-}
-
-addDomEvents();
-setUpInitialState();
+init();
+animate();

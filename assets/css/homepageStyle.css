@@ -5,26 +5,30 @@ html, body, main {
 }
 
 body {
-    margin: 0;
     overflow: hidden;
     background-color: #004466;
-}
-
-main {
-    margin-top: 2rem;
-    margin-left: 2rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
 }
 
 p.text {
     font-size: 28px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 section.background {
     width: 100%;
     height: 100%;
     position: fixed;
-    top: 0;
-    left: 0;
+    margin: 0 auto;
+    overflow: hidden;
     cursor: grab;
 }
 
@@ -43,9 +47,10 @@ div.white {
 }
 
 div.box {
+    margin-top: 2rem;
+    margin-left: 2rem;
     position: absolute;
     width: 16rem;
-    margin-left: 0;
     opacity: .8;
     text-align: center;
     pointer-events: none;
@@ -56,40 +61,21 @@ div.clickable {
     pointer-events: visible;
 }
 
-div.top {
-    margin-top: 0;
-}
-
 div.new-image {
-    margin-top: 7rem;
+    margin-top: 9rem;
 }
 
 div.github {
-    margin-top: 14rem;
+    margin-top: 16rem;
 }
 
 div.linkedin {
-    margin-top: 21rem;
+    margin-top: 23rem;
 }
 
 div.clickable:hover {
     background-color: #004466;
     color: #FFFFFF;
-}
-
-#progress {
-    width: 0;
-    height: 10px;
-    position: fixed;
-    top: 0;
-    background: #004466;
-    -webkit-transition: opacity 0.5s ease;
-    transition: opacity 0.5s ease;
-    z-index: 99999;
-}
-
-#progress.finish {
-    opacity: 0;
 }
 
 @media screen and (max-width: 610px) {
@@ -102,19 +88,15 @@ div.clickable:hover {
         width: 12em;
     }
 
-    div.top {
-        margin-top: 0;
-    }
-
     div.new-image {
-        margin-top: 6rem;
+        margin-top: 8rem;
     }
 
     div.github {
-        margin-top: 12rem;
+        margin-top: 14rem;
     }
 
     div.linkedin {
-        margin-top: 18rem;
+        margin-top: 20rem;
     }
 }
