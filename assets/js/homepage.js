@@ -23,7 +23,6 @@ images = [
     new ThreeSixtyImage("./assets/images/360/macau.jpg", 8, -1.5, 3),
     new ThreeSixtyImage("./assets/images/360/columbia.jpg", 8, 3, 3),
     new ThreeSixtyImage("./assets/images/360/florida_2.jpg", 8, -1.5, 3),
-    new ThreeSixtyImage("./assets/images/360/florida.jpg", -100, -1.5, 3),
 ]
 
 container = document.querySelector("section.background");
