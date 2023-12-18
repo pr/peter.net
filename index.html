@@ -10,54 +10,66 @@
 -->
 
 <html>
-    <head>
-        <title>Peter Richards</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
-        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link href='assets/css/homepageStyle.css' rel='stylesheet'>
+<head>
+    <title>Peter Richards</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Homepage of Peter Richards">
+    <meta name="viewport"
+          content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
 
-        <link rel='shortcut icon' type='image/x-icon' href='/assets/favicon.ico' />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+          crossorigin="anonymous"
+    >
+    <link href="assets/css/homepageStyle.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico"/>
 
-        <META NAME="description" CONTENT="Homepage of Peter Richards">
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["GoogleAnalyticsObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
 
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga("create", "UA-73810638-3", "auto");
+        ga("send", "pageview");
+    </script>
+</head>
 
-            ga('create', 'UA-73810638-3', 'auto');
-            ga('send', 'pageview');
-        </script>
-    </head>
+<body>
+<div id="progress"></div>
 
-  <body>
+<main>
+    <section class="background"></section>
 
-    <div id="progress"></div>
-
-    <main>
-
-        <section class="background"></section>
-
-        <div class="top gray box">
-            <p class="text">Peter Richards</p>
+    <div class="top gray box">
+        <p class="text">Peter Richards</p>
+    </div>
+    <div class="new-image clickable white box" onclick="refreshState();">
+        <p class="text">Cycle 360°</p>
+    </div>
+    <a href="https://github.com/pr">
+        <div class="github clickable white box">
+            <p class="text">GitHub</p>
         </div>
-        <a href="https://github.com/pr">
-            <div class="github clickable white box">
-                <p class="text">GitHub</p>
-            </div>
-        </a>
-        <a href="https://www.linkedin.com/in/peter--richards">
-            <div class="linkedin clickable white box">
-                <p class="text">LinkedIn</p>
-            </div>
-        </a>
-    </main>
+    </a>
+    <a href="https://www.linkedin.com/in/peter--richards">
+        <div class="linkedin clickable white box">
+            <p class="text">LinkedIn</p>
+        </div>
+    </a>
+</main>
 
-    <script src="assets/js/three/three.min.js"></script>
-    <script src="assets/js/panolens/panolens.min.js"></script>
-    <script src="assets/js/homepage.js"></script>
+<script src="assets/js/three/three.min.js"></script>
+<script src="assets/js/panolens/panolens.min.js"></script>
+<script src="assets/js/homepage.js"></script>
 
-  </body>
+</body>

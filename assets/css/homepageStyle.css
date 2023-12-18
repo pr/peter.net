@@ -1,13 +1,13 @@
 html, body, main {
-  width: 100%;
-  height: 100%;
-  font-family: 'Lato', cursive;
+    width: 100%;
+    height: 100%;
+    font-family: 'Lato', cursive;
 }
 
 body {
-  margin: 0;
-  overflow: hidden;
-  background-color: #004466;
+    margin: 0;
+    overflow: hidden;
+    background-color: #004466;
 }
 
 main {
@@ -20,18 +20,16 @@ p.text {
 }
 
 section.background {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  cursor: -webkit-grab;
-  cursor: grab;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: grab;
 }
 
 section.background.mousedown {
-  cursor: -webkit-grabbing;
-  cursor: grabbing;
+    cursor: grabbing;
 }
 
 div.gray {
@@ -45,48 +43,53 @@ div.white {
 }
 
 div.box {
-  position: absolute;
-  width:  16rem;
-  margin-left: 0;
-  opacity: .8;
-  text-align: center;
-  pointer-events: none;
+    position: absolute;
+    width: 16rem;
+    margin-left: 0;
+    opacity: .8;
+    text-align: center;
+    pointer-events: none;
 }
 
 div.clickable {
-  pointer-events: visible;
+    cursor: pointer;
+    pointer-events: visible;
 }
 
 div.top {
     margin-top: 0;
 }
 
-div.github {
+div.new-image {
     margin-top: 7rem;
 }
 
-div.linkedin {
+div.github {
     margin-top: 14rem;
 }
 
+div.linkedin {
+    margin-top: 21rem;
+}
+
 div.clickable:hover {
-  background-color: #004466;
-  color: #FFFFFF;
+    background-color: #004466;
+    color: #FFFFFF;
 }
 
 #progress {
-  width: 0;
-  height: 10px;
-  position: fixed;
-  top: 0;
-  background: #004466;
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
-  z-index: 99999;
+    width: 0;
+    height: 10px;
+    position: fixed;
+    top: 0;
+    background: #004466;
+    -webkit-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+    z-index: 99999;
 }
 
 #progress.finish {
-  opacity: 0;
+    opacity: 0;
 }
 
 @media screen and (max-width: 610px) {
@@ -96,18 +99,22 @@ div.clickable:hover {
     }
 
     div.box {
-      width:  12em;
+        width: 12em;
     }
 
     div.top {
         margin-top: 0;
     }
 
-    div.github {
+    div.new-image {
         margin-top: 6rem;
     }
 
-    div.linkedin {
+    div.github {
         margin-top: 12rem;
+    }
+
+    div.linkedin {
+        margin-top: 18rem;
     }
 }
