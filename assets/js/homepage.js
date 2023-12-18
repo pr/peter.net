@@ -31,12 +31,12 @@ class ThreeSixtyImage {
 
 startIndex = -1
 images = [
-    new ThreeSixtyImage("./assets/images/360/new_york_city_pier_16.jpg", -15, -30),
-    new ThreeSixtyImage("./assets/images/360/new_york_city_statue_of_liberty_exterior.jpg", 15, -10),
-    new ThreeSixtyImage("./assets/images/360/new_york_city_statue_of_liberty_interior.jpg", -50, -10),
-    new ThreeSixtyImage("./assets/images/360/macau.jpg", 0, 150),
-    new ThreeSixtyImage("./assets/images/360/columbia.jpg", -20, 3),
-    new ThreeSixtyImage("./assets/images/360/florida.jpg", 0, 190),
+    new ThreeSixtyImage("./assets/images/360_low_size/new_york_city_pier_16.jpg", -15, -30),
+    new ThreeSixtyImage("./assets/images/360_low_size/new_york_city_statue_of_liberty_exterior.jpg", 15, -10),
+    new ThreeSixtyImage("./assets/images/360_low_size/new_york_city_statue_of_liberty_interior.jpg", -50, -10),
+    new ThreeSixtyImage("./assets/images/360_low_size/macau.jpg", 0, -70),
+    new ThreeSixtyImage("./assets/images/360_low_size/columbia.jpg", -20, 3),
+    new ThreeSixtyImage("./assets/images/360_low_size/florida.jpg", 0, 190),
 ]
 
 function loadMesh() {
