@@ -22,7 +22,7 @@ let mesh
 // Huge thanks to https://norikdavtian.github.io/ThreeJS-360-Panorama/
 
 class ThreeSixtyImage {
-    constructor(imageLocation, start_latitude, start_longitude, field_of_view) {
+    constructor(imageLocation, start_latitude, start_longitude) {
         this.imageLocation = imageLocation;
         this.start_latitude = start_latitude;
         this.start_longitude = start_longitude;
@@ -44,7 +44,7 @@ function loadMesh() {
 
     let image = images[(startIndex) % images.length]
 
-    texture = THREE.ImageUtils.loadTexture(image.imageLocation, new THREE.UVMapping())
+    texture = new THREE.TextureLoader().load(image.imageLocation)
     mesh = new THREE.Mesh(new THREE.SphereGeometry(500, 60, 40), new THREE.MeshBasicMaterial({map: texture}));
     mesh.scale.x = -1;
 
@@ -62,15 +62,13 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     element.appendChild(renderer.domElement);
     element.addEventListener("mousedown", onDocumentMouseDown, false);
-    element.addEventListener("mousewheel", onDocumentMouseWheel, false);
-    element.addEventListener("DOMMouseScroll", onDocumentMouseWheel, false);
     window.addEventListener("resize", onWindowResized, false);
     onWindowResized();
 }
 
 function onWindowResized() {
     renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.projectionMatrix.makePerspective(field_of_view, window.innerWidth / window.innerHeight, 1, 1100);
+    camera.updateProjectionMatrix(field_of_view, window.innerWidth / window.innerHeight, 1, 1100);
 }
 
 function onDocumentMouseDown(event) {
@@ -83,32 +81,23 @@ function onDocumentMouseDown(event) {
     element.addEventListener("mousemove", onDocumentMouseMove, false);
     element.addEventListener("mouseup", onDocumentMouseUp, false);
 }
+
 function onDocumentMouseMove(event) {
     longitude = (event.clientX - onPointerDownPointerX) * -0.175 + onPointerDownLon;
     latitude = (event.clientY - onPointerDownPointerY) * -0.175 + onPointerDownLat;
 }
+
 function onDocumentMouseUp() {
     isUserInteracting = false;
     element.removeEventListener("mousemove", onDocumentMouseMove, false);
     element.removeEventListener("mouseup", onDocumentMouseUp, false);
 }
-function onDocumentMouseWheel(event) {
-    if (event.wheelDeltaY) {
-        field_of_view -= event.wheelDeltaY * 0.05;
-    } else if (event.wheelDelta) {
-        field_of_view -= event.wheelDelta * 0.05;
-    } else if (event.detail) {
-        field_of_view += event.detail * 1.0;
-    }
-    if (field_of_view < 45 || field_of_view > 90) {
-        field_of_view = (field_of_view < 45) ? 45 : 90;
-    }
-    camera.projectionMatrix.makePerspective(field_of_view, ratio, 1, 1100);
-}
+
 function animate() {
     requestAnimationFrame(animate);
     render();
 }
+
 function render() {
     if (isUserInteracting === false) {
         longitude += .025;
