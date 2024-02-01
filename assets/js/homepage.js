@@ -31,7 +31,10 @@ class ThreeSixtyImage {
 
 startIndex = -1
 images = [
-    new ThreeSixtyImage("./assets/images/360_low_size/new_york_city_pier_16.jpg", -15, -30),
+    new ThreeSixtyImage("./assets/images/360_low_size/new_york_city_pier_16.jpg", -20, -30),
+    new ThreeSixtyImage("./assets/images/360_low_size/tokyo_tower.jpg", -10, 25),
+    new ThreeSixtyImage("./assets/images/360_low_size/tokyo_mikasa.jpg", -20, 170),
+    new ThreeSixtyImage("./assets/images/360_low_size/tokyo_aioi_bridge.jpg", -15, -10),
     new ThreeSixtyImage("./assets/images/360_low_size/new_york_city_statue_of_liberty_exterior.jpg", 15, -10),
     new ThreeSixtyImage("./assets/images/360_low_size/new_york_city_statue_of_liberty_interior.jpg", -50, -10),
     new ThreeSixtyImage("./assets/images/360_low_size/macau.jpg", 0, -70),
