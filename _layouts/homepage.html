@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<!--
+██████╗ ███████╗████████╗███████╗██████╗      ███╗   ██╗███████╗████████╗
+██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗     ████╗  ██║██╔════╝╚══██╔══╝
+██████╔╝█████╗     ██║   █████╗  ██████╔╝     ██╔██╗ ██║█████╗     ██║
+██╔═══╝ ██╔══╝     ██║   ██╔══╝  ██╔══██╗     ██║╚██╗██║██╔══╝     ██║
+██║     ███████╗   ██║   ███████╗██║  ██║ ██╗ ██║ ╚████║███████╗   ██║
+╚═╝     ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝ ╚═╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝
+-->
+
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <title>Peter Richards</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Peter Richards, New York City, Washington, D.C., Columbia University, St. Albans">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico"/>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["GoogleAnalyticsObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
+
+        ga("create", "UA-73810638-3", "auto");
+        ga("send", "pageview");
+    </script>
+</head>
+
+<body class="bg-slate-300 h-screen text-cyan-950 px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+
+<header class="flex w-full overflow-hidden pt-10 pb-1">
+    <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
+        <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+            <div class="mr-4 md:mr-8">
+                <a href="/" class="text-3xl font-bold">Peter Richards</a>
+            </div>
+            <div class="ml-auto md:hidden flex items-center justify-start">
+                <button onclick="menuToggle()" @click="open = !open"
+                        class="tap-highlight-transparent text-cyan-950 w-5 h-5 relative focus:outline-none"
+                        @click="open = !open">
+                    <span class="sr-only">Open main menu</span>
+                    <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span aria-hidden="true"
+                    class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                    :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+                        <span aria-hidden="true"
+                              class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                              :class="{'opacity-0': open } "></span>
+                        <span aria-hidden="true"
+                              class="block absolute h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                              :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+                    </div>
+                </button>
+            </div>
+            <div id="menu"
+                 class="w-full h-0 transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
+                <ul id="ulMenu"
+                    class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
+                    <li class="group transition duration-300">
+                        <a href="https://github.com/pr" class="text-2xl tap-highlight-transparent">GitHub
+                            <span class="hidden md:block h-0.5 bg-cyan-950"></span>
+                        </a>
+                    </li>
+                    <li class="group transition duration-300">
+                        <a href="https://www.linkedin.com/in/peter--richards"
+                           class="text-2xl tap-highlight-transparent">LinkedIn
+                            <span class="hidden md:block h-0.5 bg-cyan-950"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container mx-auto">
+    <section class="text-neutral-700">
+        <div class="container w-full">
+            <div class="flex flex-wrap w-full">
+                {{ content }}
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="max-w-screen-xl py-16 mx-auto"></div>
+</footer>
+<script>
+    Fancybox.bind("[data-fancybox]", {});
+</script>
+<script src="dist/fade_in.js"></script>
+<script src="dist/menu.js"></script>
+</body>
+
+</html>

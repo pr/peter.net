@@ -1,71 +1,112 @@
-<!DOCTYPE HTML>
+---
 
-<!--
-██████╗ ███████╗████████╗███████╗██████╗      ███╗   ██╗███████╗████████╗
-██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗     ████╗  ██║██╔════╝╚══██╔══╝
-██████╔╝█████╗     ██║   █████╗  ██████╔╝     ██╔██╗ ██║█████╗     ██║
-██╔═══╝ ██╔══╝     ██║   ██╔══╝  ██╔══██╗     ██║╚██╗██║██╔══╝     ██║
-██║     ███████╗   ██║   ███████╗██║  ██║ ██╗ ██║ ╚████║███████╗   ██║
-╚═╝     ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝ ╚═╝ ╚═╝  ╚═══╝╚══════╝   ╚═╝
--->
+layout: homepage
+permalink: /
 
-<html lang="en">
-<head>
-    <title>Peter Richards</title>
-    <meta charset="utf-8">
-    <meta name="description" content="Homepage of Peter Richards">
-    <meta name="viewport"
-          content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+---
 
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-          crossorigin="anonymous"
-    >
-    <link href="assets/css/homepageStyle.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico"/>
-
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i["GoogleAnalyticsObject"] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
-
-        ga("create", "UA-73810638-3", "auto");
-        ga("send", "pageview");
-    </script>
-</head>
-
-<body>
-    <section class="background"></section>
-
-    <div class="top gray box">
-        <p class="text">Peter Richards</p>
-    </div>
-    <div class="new-image clickable white box" onclick="refreshMesh();">
-        <p class="text">Cycle 360°</p>
-    </div>
-    <a href="https://github.com/pr">
-        <div class="github clickable white box">
-            <p class="text">GitHub</p>
+<div class="container mx-auto">
+    <h1 class="text-2xl pt-4 pb-4 font-bold"></h1>
+    <section class="text-neutral-700">
+        <div class="container w-full">
+            <div class="flex flex-wrap w-full">
+                {% for image in site.data.images %}
+                {% assign mod = forloop.index | modulo: 8 %}
+                {% if mod == 1 %}
+                <div class="flex w-full md:w-1/2 flex-wrap">
+                    <div class="w-full p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery1" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                    {% elsif mod == 2 %}
+                    <div class="w-full md:w-1/2 p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery2" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                    {% elsif mod == 3 %}
+                    <div class="w-full md:w-1/2 p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery3" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                    {% elsif mod == 4 %}
+                    <div class="w-full md:w-1/2 p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery4" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                    {% elsif mod == 5 %}
+                    <div class="w-full md:w-1/2 p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery5" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% elsif mod == 6 %}
+                <div class="flex w-full md:w-1/2 flex-wrap">
+                    <div class="w-full md:w-1/2 p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery6" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                    {% elsif mod == 7 %}
+                    <div class="w-full md:w-1/2 p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery7" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="w-full p-1">
+                        <div class="overflow-hidden h-full w-full">
+                            <a href="photography/{{ image.name }}.png" data-fancybox="gallery7" data-caption="{{ image.location }}">
+                                <img alt="{{ image.location }}"
+                                     class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                                     loading="lazy"
+                                     src="photography/{{ image.name }}.png" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
         </div>
-    </a>
-    <a href="https://www.linkedin.com/in/peter--richards">
-        <div class="linkedin clickable white box">
-            <p class="text">LinkedIn</p>
-        </div>
-    </a>
-
-    <!--For some reason going to 89 breaks it silently-->
-    <script type="text/javascript" src='https://unpkg.com/three@0.88.0/build/three.min.js'> </script>
-    <script src="assets/js/homepage.js"></script>
-</body>
-</html>
+    </section>
+</div>
